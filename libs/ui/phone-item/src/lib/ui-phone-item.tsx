@@ -1,14 +1,18 @@
-import styles from './ui-phone-item.module.css';
+import { Box, Heading, Text } from '@chakra-ui/react';
+import { Phone } from '@phonehome/api-interfaces';
 
-/* eslint-disable-next-line */
-export interface UiPhoneItemProps {}
+export interface UiPhoneItemProps {
+  phone: Phone;
+}
 
-export function UiPhoneItem(props: UiPhoneItemProps) {
+export function PhoneItem(props: UiPhoneItemProps) {
+  const { phone } = props;
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to UiPhoneItem!</h1>
-    </div>
+    <Box p={5} shadow='md' borderWidth='1px'>
+      <Heading fontSize='xl'>{phone.manufacturer}</Heading>
+      <Text mt={4}>{phone.name}</Text>
+    </Box>
   );
 }
 
-export default UiPhoneItem;
+export default PhoneItem;

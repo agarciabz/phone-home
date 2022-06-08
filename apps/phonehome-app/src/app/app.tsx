@@ -1,5 +1,6 @@
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, VStack } from '@chakra-ui/react';
 import { Phone } from '@phonehome/api-interfaces';
+import { PhoneItem } from '@phonehome/ui/phone-item';
 import { useEffect, useState } from 'react';
 
 export const App = () => {
@@ -13,9 +14,9 @@ export const App = () => {
 
   return (
     <ChakraProvider>
-      <ul>
-        {phones.map(p => <li key={p.id}>{p.name}</li>)}
-      </ul>
+      <VStack>
+        {phones.map(p => <PhoneItem key={p.id} phone={p}></PhoneItem>)}
+      </VStack>
     </ChakraProvider>
   );
 };
