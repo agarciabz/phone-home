@@ -1,0 +1,84 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/phonehome-app/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/phonehome-app",
+        "index": "apps/phonehome-app/src/index.html",
+        "baseHref": "/",
+        "main": "apps/phonehome-app/src/main.tsx",
+        "polyfills": "apps/phonehome-app/src/polyfills.ts",
+        "tsConfig": "apps/phonehome-app/tsconfig.app.json",
+        "assets": [
+          "apps/phonehome-app/src/favicon.ico",
+          "apps/phonehome-app/src/assets"
+        ],
+        "styles": ["apps/phonehome-app/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/phonehome-app/src/environments/environment.ts",
+              "with": "apps/phonehome-app/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "phonehome-app:build",
+        "hmr": true,
+        "proxyConfig": "apps/phonehome-app/proxy.conf.json"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "phonehome-app:build:development"
+        },
+        "production": {
+          "buildTarget": "phonehome-app:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/phonehome-app/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/phonehome-app"],
+      "options": {
+        "jestConfig": "apps/phonehome-app/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
