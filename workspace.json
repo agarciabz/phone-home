@@ -5,6 +5,7 @@
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
     "phonehome-app": "apps/phonehome-app",
-    "phonehome-app-e2e": "apps/phonehome-app-e2e"
+    "phonehome-app-e2e": "apps/phonehome-app-e2e",
+    "ui-phone-item": "libs/ui/phone-item"
   }
 }

@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@phonehome/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@phonehome/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@phonehome/ui/phone-item": ["libs/ui/phone-item/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
