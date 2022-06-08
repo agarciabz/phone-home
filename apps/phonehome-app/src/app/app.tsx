@@ -1,5 +1,6 @@
+import { ChakraProvider } from '@chakra-ui/react';
 import { Phone } from '@phonehome/api-interfaces';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const App = () => {
   const [phones, setPhones] = useState<Phone[]>([]);
@@ -11,19 +12,11 @@ export const App = () => {
   }, []);
 
   return (
-    <>
-      <div style={{ textAlign: 'center' }}>
-        <h1>Welcome to phonehome-app!</h1>
-        <img
-          width="450"
-          src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-          alt="Nx - Smart, Fast and Extensible Build System"
-        />
-      </div>
+    <ChakraProvider>
       <ul>
         {phones.map(p => <li key={p.id}>{p.name}</li>)}
       </ul>
-    </>
+    </ChakraProvider>
   );
 };
 
