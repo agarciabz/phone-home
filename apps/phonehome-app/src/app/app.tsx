@@ -1,13 +1,13 @@
+import { Phone } from '@phonehome/api-interfaces';
 import React, { useEffect, useState } from 'react';
-import { Message } from '@phonehome/api-interfaces';
 
 export const App = () => {
-  const [m, setMessage] = useState<Message>({ message: '' });
+  const [phones, setPhones] = useState<Phone[]>([]);
 
   useEffect(() => {
-    fetch('/api')
+    fetch('/api/phones')
       .then((r) => r.json())
-      .then(setMessage);
+      .then(setPhones);
   }, []);
 
   return (
@@ -20,7 +20,9 @@ export const App = () => {
           alt="Nx - Smart, Fast and Extensible Build System"
         />
       </div>
-      <div>{m.message}</div>
+      <ul>
+        {phones.map(p => <li key={p.id}>{p.name}</li>)}
+      </ul>
     </>
   );
 };
