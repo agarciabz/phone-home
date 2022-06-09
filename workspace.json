@@ -4,6 +4,8 @@
   "projects": {
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
+    "features-phone-phone-detail": "libs/features/phone/phone-detail",
+    "features-phone-phone-list": "libs/features/phone/phone-list",
     "phonehome-app": "apps/phonehome-app",
     "phonehome-app-e2e": "apps/phonehome-app-e2e",
     "ui-phone-item": "libs/ui/phone-item"
