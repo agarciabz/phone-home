@@ -1,4 +1,4 @@
-import { VStack, Spinner } from '@chakra-ui/react';
+import { VStack, Spinner, Link } from '@chakra-ui/react';
 import { Phone } from '@phonehome/api-interfaces';
 import { PhoneItem } from '@phonehome/ui/phone-item';
 import { useEffect, useState } from 'react';
@@ -27,7 +27,9 @@ export function PhoneList(props: FeaturesPhonePhoneListProps) {
       ) : (
         <VStack py={5}>
           {phones.map((p) => (
-            <PhoneItem key={p.id} phone={p}></PhoneItem>
+            <Link key={p.id} href={`/phone/${p.id}`}>
+              <PhoneItem key={p.id} phone={p}></PhoneItem>
+            </Link>
           ))}
         </VStack>
       )}

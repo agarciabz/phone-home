@@ -1,14 +1,11 @@
-import styles from './features-phone-phone-detail.module.css';
+import { useParams } from 'react-router-dom';
 
 /* eslint-disable-next-line */
 export interface FeaturesPhonePhoneDetailProps {}
 
-export function FeaturesPhonePhoneDetail(props: FeaturesPhonePhoneDetailProps) {
-  return (
-    <div className={styles['container']}>
-      <h1>Welcome to FeaturesPhonePhoneDetail!</h1>
-    </div>
-  );
+export function PhoneDetail(props: FeaturesPhonePhoneDetailProps) {
+  const params = useParams();
+  return <div>Phone ID: {params['phoneId']}</div>;
 }
 
-export default FeaturesPhonePhoneDetail;
+export default PhoneDetail;
