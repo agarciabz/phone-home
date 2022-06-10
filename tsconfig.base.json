@@ -16,6 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@phonehome/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@phonehome/features/phone/phone-create": [
+        "libs/features/phone/phone-create/src/index.ts"
+      ],
       "@phonehome/features/phone/phone-detail": [
         "libs/features/phone/phone-detail/src/index.ts"
       ],
