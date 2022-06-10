@@ -27,6 +27,16 @@ app.get('/api/phones', (req, res) => {
   res.send(phones);
 });
 
+app.get('/api/phones/:id', (req, res) => {
+  const id = +req.params.id;
+  const phone = phones.find((p) => p.id === id);
+  if (phone) {
+    res.status(200).send(phone);
+  } else {
+    res.status(404).send({ message: 'Phone not found' });
+  }
+});
+
 const port = process.env.port || 3333;
 const server = app.listen(port, () => {
   console.log('Listening at http://localhost:' + port + '/api');
