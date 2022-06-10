@@ -11,29 +11,71 @@ import {
   NumberInputStepper,
   VStack,
 } from '@chakra-ui/react';
-import styles from './features-phone-components-phone-form.module.css';
+import { Phone } from '@phonehome/api-interfaces';
+import { ChangeEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 /* eslint-disable-next-line */
-export interface FeaturesPhoneComponentsPhoneFormProps {}
+export interface PhoneFormProps {
+  phone?: Phone;
+  onSubmit: (phone: Phone) => void;
+}
 
-export function PhoneForm(props: FeaturesPhoneComponentsPhoneFormProps) {
+export function PhoneForm(props: PhoneFormProps) {
+  const { onSubmit } = props;
+  const [formValue, setFormValue] = useState({});
+  const navigate = useNavigate();
+
+  const goBackToList = () => navigate('/phones');
+  const submitForm = () => {
+    onSubmit(formValue as Phone);
+  };
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormValue({
+      ...formValue,
+      [name]: value,
+    });
+  };
+
+  const handleRamChange = (valueAsString: string, valueAsNumber: number) =>
+    handleNumericInputChange(valueAsString, valueAsNumber, 'ram');
+
+  const handleNumericInputChange = (
+    valueAsString: string,
+    valueAsNumber: number,
+    name: string
+  ) => {
+    setFormValue({
+      ...formValue,
+      [name]: valueAsString ? valueAsString : valueAsNumber,
+    });
+  };
+
+  const handlePriceChange = (valueString: string) =>
+    setFormValue({
+      ...formValue,
+      price: Number(valueString),
+    });
+
   return (
     <VStack as="form">
       <FormControl>
         <FormLabel>Name</FormLabel>
-        <Input id="name"></Input>
+        <Input name="name" onChange={handleInputChange}></Input>
       </FormControl>
       <FormControl>
         <FormLabel>Manufacturer</FormLabel>
-        <Input id="manufacturer"></Input>
+        <Input name="manufacturer" onChange={handleInputChange}></Input>
       </FormControl>
       <FormControl>
         <FormLabel>Processor</FormLabel>
-        <Input id="processor"></Input>
+        <Input name="processor" onChange={handleInputChange}></Input>
       </FormControl>
       <FormControl>
         <FormLabel>Ram (Gb)</FormLabel>
-        <NumberInput>
+        <NumberInput onChange={handleRamChange} name="ram">
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper />
@@ -43,17 +85,17 @@ export function PhoneForm(props: FeaturesPhoneComponentsPhoneFormProps) {
       </FormControl>
       <FormControl>
         <FormLabel>Screen</FormLabel>
-        <Input id="screen"></Input>
+        <Input id="screen" onChange={handleInputChange} name="screen"></Input>
       </FormControl>
       <FormControl>
         <FormLabel>Price</FormLabel>
-        <NumberInput>
+        <NumberInput onChange={handlePriceChange} name="price">
           <NumberInputField />
         </NumberInput>
       </FormControl>
       <HStack>
-        <Button>Discard</Button>
-        <Button>Submit</Button>
+        <Button onClick={goBackToList}>Discard</Button>
+        <Button onClick={submitForm}>Submit</Button>
       </HStack>
     </VStack>
   );

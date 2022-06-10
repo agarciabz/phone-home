@@ -1,5 +1,5 @@
 export interface Phone {
-  id: number;
+  id: string;
   name: string;
   manufacturer: string;
   color: string;

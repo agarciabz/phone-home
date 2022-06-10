@@ -12,6 +12,7 @@
   "dependencies": {
     "@chakra-ui/react": "^2.2.1",
     "@emotion/react": "^11.9.0",
+    "body-parser": "^1.20.0",
     "core-js": "^3.6.5",
     "express": "4.17.2",
     "framer-motion": "^6.3.11",
