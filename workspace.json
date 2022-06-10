@@ -4,9 +4,9 @@
   "projects": {
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
-    "features-phone-phone-create": "libs/features/phone/phone-create",
-    "features-phone-phone-detail": "libs/features/phone/phone-detail",
-    "features-phone-phone-list": "libs/features/phone/phone-list",
+    "features-phone-containers-phone-create": "libs/features/phone/containers/phone-create",
+    "features-phone-containers-phone-detail": "libs/features/phone/containers/phone-detail",
+    "features-phone-containers-phone-list": "libs/features/phone/containers/phone-list",
     "phonehome-app": "apps/phonehome-app",
     "phonehome-app-e2e": "apps/phonehome-app-e2e",
     "ui-phone-item": "libs/ui/phone-item"

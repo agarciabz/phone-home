@@ -17,13 +17,13 @@
     "paths": {
       "@phonehome/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@phonehome/features/phone/phone-create": [
-        "libs/features/phone/phone-create/src/index.ts"
+        "libs/features/phone/containers/phone-create/src/index.ts"
       ],
       "@phonehome/features/phone/phone-detail": [
-        "libs/features/phone/phone-detail/src/index.ts"
+        "libs/features/phone/containers/phone-detail/src/index.ts"
       ],
       "@phonehome/features/phone/phone-list": [
-        "libs/features/phone/phone-list/src/index.ts"
+        "libs/features/phone/containers/phone-list/src/index.ts"
       ],
       "@phonehome/ui/phone-item": ["libs/ui/phone-item/src/index.ts"]
     }
