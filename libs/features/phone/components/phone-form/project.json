@@ -1,0 +1,25 @@
+{
+  "$schema": "../../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/features/phone/components/phone-form/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/features/phone/components/phone-form/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/features/phone/components/phone-form"],
+      "options": {
+        "jestConfig": "libs/features/phone/components/phone-form/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

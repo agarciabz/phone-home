@@ -1,14 +1,16 @@
-import styles from './features-phone-phone-create.module.css';
+import { Heading, VStack } from '@chakra-ui/react';
+import { PhoneForm } from '@phonehome/features/phone/components/phone-form';
 
 /* eslint-disable-next-line */
 export interface FeaturesPhonePhoneCreateProps {}
 
-export function FeaturesPhonePhoneCreate(props: FeaturesPhonePhoneCreateProps) {
+export function PhoneCreate(props: FeaturesPhonePhoneCreateProps) {
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to FeaturesPhonePhoneCreate!</h1>
-    </div>
+    <VStack p={5}>
+      <Heading>New Phone</Heading>
+      <PhoneForm></PhoneForm>
+    </VStack>
   );
 }
 
-export default FeaturesPhonePhoneCreate;
+export default PhoneCreate;
