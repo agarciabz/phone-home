@@ -2,9 +2,11 @@ import {
   Box,
   Button,
   Center,
+  Flex,
   Heading,
   HStack,
   Image,
+  Spacer,
   Spinner,
   Text,
   VStack,
@@ -56,7 +58,13 @@ export function PhoneDetail(props: FeaturesPhonePhoneDetailProps) {
       <Spinner size="xl" color="teal"></Spinner>
     </Center>
   ) : phone ? (
-    <VStack p={5}>
+    <Flex
+      p={5}
+      flexDir={'column'}
+      gap={6}
+      width={{ base: 'full', md: '60%' }}
+      mx={{ base: '0', md: 'auto' }}
+    >
       <VStack>
         <Heading as="h2" size="md">
           {phone.manufacturer}
@@ -84,15 +92,15 @@ export function PhoneDetail(props: FeaturesPhonePhoneDetailProps) {
           <Text fontSize="2xl">{phone.price}€</Text>
         </VStack>
       </Box>
-      <HStack>
+      <Flex flexDir={'row'} gap={4} justifyContent={'center'}>
         <Button colorScheme="teal" onClick={onBackToList}>
           Back to list
         </Button>
         <Button colorScheme="red" onClick={onDeletePhone}>
           Delete phone
         </Button>
-      </HStack>
-    </VStack>
+      </Flex>
+    </Flex>
   ) : null;
 }
 
