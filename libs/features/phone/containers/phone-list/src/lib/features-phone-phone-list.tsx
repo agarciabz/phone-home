@@ -6,6 +6,8 @@ import {
   Heading,
   Flex,
   Center,
+  SimpleGrid,
+  useMediaQuery,
 } from '@chakra-ui/react';
 import { Phone } from '@phonehome/api-interfaces';
 import { PhoneItem } from '@phonehome/ui/phone-item';
@@ -18,6 +20,7 @@ export interface FeaturesPhonePhoneListProps {}
 export function PhoneList(props: FeaturesPhonePhoneListProps) {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [isLoading, setLoading] = useState(false);
+  const [isLargerThan1280] = useMediaQuery('(min-width: 1280px)');
   const navigate = useNavigate();
 
   const navigateToNewPhone = () => navigate('/phone/new');
@@ -46,13 +49,13 @@ export function PhoneList(props: FeaturesPhonePhoneListProps) {
       <Button onClick={navigateToNewPhone} colorScheme="teal">
         New phone
       </Button>
-      <VStack>
+      <SimpleGrid columns={isLargerThan1280 ? 4 : 1} gap={6}>
         {phones.map((p) => (
           <Link key={p.id} href={`/phone/${p.id}`}>
             <PhoneItem key={p.id} phone={p}></PhoneItem>
           </Link>
         ))}
-      </VStack>
+      </SimpleGrid>
     </VStack>
   );
 }
