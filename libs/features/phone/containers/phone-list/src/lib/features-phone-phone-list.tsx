@@ -19,7 +19,11 @@ export function PhoneList(props: FeaturesPhonePhoneListProps) {
     fetch('/api/phones')
       .then((r) => r.json())
       .then((res) => {
-        setPhones(res);
+        const phones = res.map((phone: any) => ({
+          ...phone,
+          id: phone._id,
+        }));
+        setPhones(phones);
         setLoading(false);
       });
   }, []);
