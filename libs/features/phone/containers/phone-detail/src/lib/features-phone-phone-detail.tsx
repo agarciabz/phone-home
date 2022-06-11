@@ -1,7 +1,9 @@
 import {
   Box,
   Button,
+  Center,
   Heading,
+  HStack,
   Image,
   Spinner,
   Text,
@@ -24,6 +26,20 @@ export function PhoneDetail(props: FeaturesPhonePhoneDetailProps) {
   const url = `/api/phones/${params['phoneId']}`;
 
   const onBackToList = () => navigate('/phones');
+  const onDeletePhone = () => {
+    setLoading(true);
+    fetch(url, {
+      method: 'delete',
+    })
+      .then(() => {
+        setLoading(false);
+        onBackToList();
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+      });
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -36,7 +52,9 @@ export function PhoneDetail(props: FeaturesPhonePhoneDetailProps) {
   }, []);
 
   return isLoading ? (
-    <Spinner size="xl"></Spinner>
+    <Center pt="50">
+      <Spinner size="xl" color="teal"></Spinner>
+    </Center>
   ) : phone ? (
     <VStack p={5}>
       <VStack>
@@ -66,9 +84,14 @@ export function PhoneDetail(props: FeaturesPhonePhoneDetailProps) {
           <Text fontSize="2xl">{phone.price}€</Text>
         </VStack>
       </Box>
-      <Button colorScheme="teal" onClick={onBackToList}>
-        Back to list
-      </Button>
+      <HStack>
+        <Button colorScheme="teal" onClick={onBackToList}>
+          Back to list
+        </Button>
+        <Button colorScheme="red" onClick={onDeletePhone}>
+          Delete phone
+        </Button>
+      </HStack>
     </VStack>
   ) : null;
 }

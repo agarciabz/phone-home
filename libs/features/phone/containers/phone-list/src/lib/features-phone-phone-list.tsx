@@ -1,4 +1,12 @@
-import { VStack, Spinner, Link, Button } from '@chakra-ui/react';
+import {
+  VStack,
+  Spinner,
+  Link,
+  Button,
+  Heading,
+  Flex,
+  Center,
+} from '@chakra-ui/react';
 import { Phone } from '@phonehome/api-interfaces';
 import { PhoneItem } from '@phonehome/ui/phone-item';
 import { useEffect, useState } from 'react';
@@ -29,15 +37,22 @@ export function PhoneList(props: FeaturesPhonePhoneListProps) {
   }, []);
 
   return isLoading ? (
-    <Spinner size="xl"></Spinner>
+    <Center pt="40">
+      <Spinner size="xl" color="teal"></Spinner>
+    </Center>
   ) : (
     <VStack py={5}>
-      {phones.map((p) => (
-        <Link key={p.id} href={`/phone/${p.id}`}>
-          <PhoneItem key={p.id} phone={p}></PhoneItem>
-        </Link>
-      ))}
-      <Button onClick={navigateToNewPhone}>New phone</Button>
+      <Heading>The Phone Home</Heading>
+      <Button onClick={navigateToNewPhone} colorScheme="teal">
+        New phone
+      </Button>
+      <VStack>
+        {phones.map((p) => (
+          <Link key={p.id} href={`/phone/${p.id}`}>
+            <PhoneItem key={p.id} phone={p}></PhoneItem>
+          </Link>
+        ))}
+      </VStack>
     </VStack>
   );
 }

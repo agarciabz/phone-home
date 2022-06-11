@@ -95,7 +95,9 @@ export function PhoneForm(props: PhoneFormProps) {
       </FormControl>
       <HStack>
         <Button onClick={goBackToList}>Discard</Button>
-        <Button onClick={submitForm}>Submit</Button>
+        <Button onClick={submitForm} colorScheme="teal">
+          Submit
+        </Button>
       </HStack>
     </VStack>
   );

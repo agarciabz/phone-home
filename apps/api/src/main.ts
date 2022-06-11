@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import { PhoneModel } from './app/models/phone';
 import {
   createPhone,
+  deletePhone,
   getAllPhones,
   getPhoneById,
 } from './app/controllers/phones';
@@ -42,6 +43,8 @@ app.get('/api/phones', getAllPhones);
 app.get('/api/phones/:id', getPhoneById);
 
 app.post('/api/phones', bodyParser.json(), createPhone);
+
+app.delete('/api/phones/:id', deletePhone);
 
 const port = process.env.port || 3333;
 const server = app.listen(port, () => {
