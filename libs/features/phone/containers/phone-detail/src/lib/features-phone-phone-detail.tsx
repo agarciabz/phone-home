@@ -13,10 +13,7 @@ import { Phone } from '@phonehome/api-interfaces';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-/* eslint-disable-next-line */
-export interface FeaturesPhonePhoneDetailProps {}
-
-export function PhoneDetail(props: FeaturesPhonePhoneDetailProps) {
+export function PhoneDetail() {
   const [phone, setPhone] = useState<Phone>();
   const [isLoading, setLoading] = useState(false);
 
@@ -24,6 +21,7 @@ export function PhoneDetail(props: FeaturesPhonePhoneDetailProps) {
   const navigate = useNavigate();
 
   const url = `/api/phones/${params['phoneId']}`;
+  const placeholder = 'assets/smartphone_placeholder.png';
 
   const onBackToList = () => navigate('/phones');
   const onDeletePhone = () => {
@@ -60,6 +58,7 @@ export function PhoneDetail(props: FeaturesPhonePhoneDetailProps) {
       p={5}
       flexDir={'column'}
       gap={2}
+      alignItems="center"
       width={{ base: 'full', md: '60%' }}
       mx={{ base: '0', md: 'auto' }}
     >
@@ -69,7 +68,12 @@ export function PhoneDetail(props: FeaturesPhonePhoneDetailProps) {
         </Heading>
         <Heading as="h1">{phone.name}</Heading>
       </VStack>
-      <Image src={phone.img} boxSize="72" alt={phone.name}></Image>
+      <Image
+        src={phone.img || placeholder}
+        boxSize="72"
+        objectFit="contain"
+        alt={phone.name}
+      ></Image>
       <Box bg="gray.100">
         <VStack>
           <Text>Processor</Text>
