@@ -45,7 +45,13 @@ export function PhoneList(props: FeaturesPhonePhoneListProps) {
     </Center>
   ) : (
     <VStack py={5} gap={2}>
-      <Heading>The Phone Home</Heading>
+      <Heading
+        size={'2xl'}
+        bgGradient="linear(to-r, green.500, teal.500, purple.500)"
+        bgClip="text"
+      >
+        The Phone Home
+      </Heading>
       <Button onClick={navigateToNewPhone} colorScheme="teal">
         New phone
       </Button>

@@ -8,6 +8,7 @@ const phoneSchema = new Schema<Phone>({
   screen: String,
   processor: String,
   ram: Number,
+  img: String,
 });
 
 export const PhoneModel = model('Phone', phoneSchema);

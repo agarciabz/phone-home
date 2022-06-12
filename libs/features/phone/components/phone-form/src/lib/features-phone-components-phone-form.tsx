@@ -15,9 +15,7 @@ import { Phone } from '@phonehome/api-interfaces';
 import { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-/* eslint-disable-next-line */
 export interface PhoneFormProps {
-  phone?: Phone;
   onSubmit: (phone: Phone) => void;
 }
 
@@ -92,6 +90,10 @@ export function PhoneForm(props: PhoneFormProps) {
         <NumberInput onChange={handlePriceChange} name="price">
           <NumberInputField />
         </NumberInput>
+      </FormControl>
+      <FormControl>
+        <FormLabel>Image url</FormLabel>
+        <Input name="img" onChange={handleInputChange}></Input>
       </FormControl>
       <HStack gap={4}>
         <Button onClick={goBackToList}>Discard</Button>

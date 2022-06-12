@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Image } from '@chakra-ui/react';
+import { Box, Heading, Text, Image, VStack } from '@chakra-ui/react';
 import { Phone } from '@phonehome/api-interfaces';
 
 export interface PhoneItemProps {
@@ -14,9 +14,14 @@ export function PhoneItem(props: PhoneItemProps) {
         src={phone.img || placeholder}
         boxSize="52"
         objectFit="contain"
+        pb={2}
       ></Image>
-      <Heading fontSize="xl">{phone.name}</Heading>
-      <Text mt={4}>{phone.manufacturer}</Text>
+      <VStack spacing={1}>
+        <Heading color="teal" fontSize="xl">
+          {phone.name}
+        </Heading>
+        <Text mt={4}>{phone.manufacturer}</Text>
+      </VStack>
     </Box>
   );
 }
