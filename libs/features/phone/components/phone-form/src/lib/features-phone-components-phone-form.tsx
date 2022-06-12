@@ -73,7 +73,7 @@ export function PhoneForm(props: PhoneFormProps) {
       </FormControl>
       <FormControl>
         <FormLabel>Ram (Gb)</FormLabel>
-        <NumberInput onChange={handleRamChange} name="ram">
+        <NumberInput onChange={handleRamChange} name="ram" min={0}>
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper />
