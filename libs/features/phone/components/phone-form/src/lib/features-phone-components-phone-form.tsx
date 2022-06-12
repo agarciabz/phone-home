@@ -60,7 +60,7 @@ export function PhoneForm(props: PhoneFormProps) {
     });
 
   return (
-    <VStack as="form">
+    <VStack as="form" gap={2}>
       <FormControl>
         <FormLabel>Name</FormLabel>
         <Input name="name" onChange={handleInputChange}></Input>
@@ -93,7 +93,7 @@ export function PhoneForm(props: PhoneFormProps) {
           <NumberInputField />
         </NumberInput>
       </FormControl>
-      <HStack>
+      <HStack gap={4}>
         <Button onClick={goBackToList}>Discard</Button>
         <Button onClick={submitForm} colorScheme="teal">
           Submit

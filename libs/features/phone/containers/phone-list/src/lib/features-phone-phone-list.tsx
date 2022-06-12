@@ -44,7 +44,7 @@ export function PhoneList(props: FeaturesPhonePhoneListProps) {
       <Spinner size="xl" color="teal"></Spinner>
     </Center>
   ) : (
-    <VStack py={5}>
+    <VStack py={5} gap={2}>
       <Heading>The Phone Home</Heading>
       <Button onClick={navigateToNewPhone} colorScheme="teal">
         New phone

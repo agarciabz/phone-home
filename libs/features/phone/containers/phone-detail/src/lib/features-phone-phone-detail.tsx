@@ -4,9 +4,7 @@ import {
   Center,
   Flex,
   Heading,
-  HStack,
   Image,
-  Spacer,
   Spinner,
   Text,
   VStack,
@@ -61,7 +59,7 @@ export function PhoneDetail(props: FeaturesPhonePhoneDetailProps) {
     <Flex
       p={5}
       flexDir={'column'}
-      gap={6}
+      gap={2}
       width={{ base: 'full', md: '60%' }}
       mx={{ base: '0', md: 'auto' }}
     >
@@ -93,9 +91,7 @@ export function PhoneDetail(props: FeaturesPhonePhoneDetailProps) {
         </VStack>
       </Box>
       <Flex flexDir={'row'} gap={4} justifyContent={'center'}>
-        <Button colorScheme="teal" onClick={onBackToList}>
-          Back to list
-        </Button>
+        <Button onClick={onBackToList}>Back to list</Button>
         <Button colorScheme="red" onClick={onDeletePhone}>
           Delete phone
         </Button>
