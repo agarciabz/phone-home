@@ -3,10 +3,14 @@ import {
   Button,
   Center,
   Flex,
+  Grid,
   Heading,
   Image,
+  SimpleGrid,
+  Spacer,
   Spinner,
   Text,
+  useMediaQuery,
   VStack,
 } from '@chakra-ui/react';
 import { Phone } from '@phonehome/api-interfaces';
@@ -16,6 +20,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 export function PhoneDetail() {
   const [phone, setPhone] = useState<Phone>();
   const [isLoading, setLoading] = useState(false);
+  const [isLargerThan1280] = useMediaQuery('(min-width: 1280px)');
 
   const params = useParams();
   const navigate = useNavigate();
@@ -57,7 +62,7 @@ export function PhoneDetail() {
     <Flex
       p={5}
       flexDir={'column'}
-      gap={2}
+      gap={4}
       alignItems="center"
       width={{ base: 'full', md: '60%' }}
       mx={{ base: '0', md: 'auto' }}
@@ -66,34 +71,56 @@ export function PhoneDetail() {
         <Heading as="h2" size="md">
           {phone.manufacturer}
         </Heading>
-        <Heading as="h1">{phone.name}</Heading>
+        <Heading color="teal" as="h1">
+          {phone.name}
+        </Heading>
       </VStack>
-      <Image
-        src={phone.img || placeholder}
-        boxSize="72"
-        objectFit="contain"
-        alt={phone.name}
-      ></Image>
-      <Box bg="gray.100">
-        <VStack>
-          <Text>Processor</Text>
-          <Text>{phone.processor}</Text>
-        </VStack>
-        <VStack>
-          <Text>Ram (Gb)</Text>
-          <Text>{phone.ram}</Text>
-        </VStack>
-        <VStack>
-          <Text>Screen</Text>
-          <Text>{phone.screen}</Text>
-        </VStack>
-      </Box>
-      <Box bg="teal.100">
-        <VStack>
-          <Text>Price</Text>
-          <Text fontSize="2xl">{phone.price}€</Text>
-        </VStack>
-      </Box>
+      <SimpleGrid columns={isLargerThan1280 ? 2 : 1} gap={6}>
+        <Image
+          src={phone.img || placeholder}
+          boxSize="72"
+          objectFit="contain"
+          alt={phone.name}
+        ></Image>
+        <Flex flexDir="column" gap={2}>
+          <Flex flexDir="column" gap="2">
+            <VStack align="left" spacing={-1}>
+              <Text color="gray" textTransform="uppercase">
+                Processor
+              </Text>
+              <Text>{phone.processor}</Text>
+            </VStack>
+            <VStack align="left" spacing={-1}>
+              <Text color="gray" textTransform="uppercase">
+                Ram (Gb)
+              </Text>
+              <Text>{phone.ram}</Text>
+            </VStack>
+            <VStack align="left" spacing={-1}>
+              <Text color="gray" textTransform="uppercase">
+                Screen
+              </Text>
+              <Text>{phone.screen}</Text>
+            </VStack>
+          </Flex>
+          <Spacer></Spacer>
+          <Box
+            p={2}
+            borderWidth="thin"
+            borderColor={'gray.200'}
+            borderRadius="lg"
+          >
+            <VStack align="start" spacing={-1}>
+              <Text color="gray" textTransform="uppercase">
+                Price
+              </Text>
+              <Text color="teal" fontSize="6xl">
+                {phone.price}€
+              </Text>
+            </VStack>
+          </Box>
+        </Flex>
+      </SimpleGrid>
       <Flex flexDir={'row'} gap={4} justifyContent={'center'}>
         <Button onClick={onBackToList}>Back to list</Button>
         <Button colorScheme="red" onClick={onDeletePhone}>
